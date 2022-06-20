@@ -20,6 +20,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:contentDescription="@string/add_contact"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:backgroundTint="@color/purple_700"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

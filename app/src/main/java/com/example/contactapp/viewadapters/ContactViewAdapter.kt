@@ -1,10 +1,11 @@
-package com.example.contactapp
+package com.example.contactapp.viewadapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import java.util.ArrayList
 

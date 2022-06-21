@@ -24,8 +24,7 @@ import java.util.ArrayList
     }
 
      override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-         holder.alphabetOrderView.text
-         holder.contactName.text = contactData[position].name
+
      }
 
      override fun getItemCount(): Int {

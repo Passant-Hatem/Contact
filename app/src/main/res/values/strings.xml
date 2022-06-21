@@ -13,4 +13,5 @@
     <string name="contact_image">Contact Image</string>
     <string name="call_contact">Call Contact</string>
     <string name="email_contact">Email Contact</string>
+    <string name="save">Save</string>
 </resources>

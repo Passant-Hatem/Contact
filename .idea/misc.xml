@@ -11,6 +11,8 @@
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.153" />
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1215" />
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/layout/contact.xml" value="0.22" />
+        <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/layout/fragment_blank.xml" value="0.35315315315315315" />
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/layout/fragment_contact_details.xml" value="0.20416666666666666" />
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/layout/fragment_contact_list.xml" value="0.1" />
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/layout/fragment_creat_contact.xml" value="0.25" />

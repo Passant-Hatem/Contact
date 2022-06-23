@@ -10,6 +10,7 @@ import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentCreatContactBinding
 import com.example.contactapp.viewmodels.ContactViewModle
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CreateContactFragment : Fragment() {
     private lateinit var binding: FragmentCreatContactBinding
@@ -66,5 +67,23 @@ class CreateContactFragment : Fragment() {
     private fun inputIsEmpty(firstName: String, lastName: String, phone: String ,email:String ,imgLink:String): Boolean {
         return firstName.isEmpty() && lastName.isEmpty() && phone.isEmpty() && email.isEmpty() && imgLink.isEmpty()
     }
+//TODO pop up dialog to cancel add new contact
+  /*  override fun onPause() {
+        super.onPause()
+        context?.let {
+         MaterialAlertDialogBuilder(it)
+             .setMessage(resources.getString(R.string.supporting_text))
+             .setPositiveButton(resources.getString(R.string.save)) { _, _ ->
+                 // Respond to positive button press
+                 insertDatToDatabase()
+             }
+             .setNegativeButton(resources.getString(R.string.discard)) { _, _ ->
+                 // Respond to negative button press
+             }
+             .show()
+
+     }
+    }*/
 }
+
 

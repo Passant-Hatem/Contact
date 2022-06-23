@@ -9,12 +9,13 @@ import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import java.util.ArrayList
 
- class ContactViewAdapter(private val contactData: ArrayList<Contact>) :
+ class ContactViewAdapter() :
     RecyclerView.Adapter<ContactViewAdapter.ViewHolder>() {
+
+    private var contactData = emptyList<Contact>()
 
      class ViewHolder(view: View):RecyclerView.ViewHolder(view){
          val contactName: TextView = view.findViewById(R.id.contactName)
-         val alphabetOrderView: TextView = view.findViewById(R.id.alphabetOrderView)
      }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,10 +25,23 @@ import java.util.ArrayList
     }
 
      override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.contactName.text = getFullName(contactData[position])
+     }
 
+     private fun getFullName(contact: Contact): CharSequence? {
+         val fullName = StringBuffer()
+         fullName.append(contact.first_name)
+         fullName.append(' ')
+         fullName.append(contact.last_name)
+         return fullName
      }
 
      override fun getItemCount(): Int {
        return contactData.size
+     }
+
+     fun setData(contacts: List<Contact>){
+         this.contactData = contacts
+         notifyDataSetChanged()
      }
  }

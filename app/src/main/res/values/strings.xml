@@ -14,4 +14,6 @@
     <string name="call_contact">Call Contact</string>
     <string name="email_contact">Email Contact</string>
     <string name="save">Save</string>
+    <string name="supporting_text">your changes have not been saved</string>
+    <string name="discard">Discard</string>
 </resources>

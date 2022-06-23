@@ -7,7 +7,7 @@ import com.example.contactapp.data.ContactDao
 class ContactController(private val contactDao: ContactDao) {
     val getAllContact: LiveData<List<Contact>> = contactDao.getAllContacts()
 
-     fun addContact(contact: Contact){
+    fun addContact(contact: Contact){
         contactDao.addContact(contact)
     }
 }

@@ -10,7 +10,6 @@ import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentCreatContactBinding
 import com.example.contactapp.viewmodels.ContactViewModle
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CreateContactFragment : Fragment() {
     private lateinit var binding: FragmentCreatContactBinding
@@ -27,7 +26,7 @@ class CreateContactFragment : Fragment() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.menu, menu)
+        inflater.inflate(R.menu.contact_view_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

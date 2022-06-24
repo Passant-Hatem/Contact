@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.CreateContactFragment">
+    tools:context=".fragments.UpdateFragment">
 
     <ImageView
-        android:id="@+id/addPhoto_img"
+        android:id="@+id/updatePhoto_img"
         android:layout_width="175dp"
         android:layout_height="175dp"
         android:layout_gravity="center_horizontal"
@@ -16,7 +16,7 @@
         android:contentDescription="@string/add_contact_picture" />
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/updateFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/base_margin"
@@ -29,7 +29,7 @@
         android:paddingEnd="4dp" />
 
     <EditText
-        android:id="@+id/lastName"
+        android:id="@+id/updateLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/base_margin"
@@ -44,7 +44,7 @@
         android:paddingEnd="4dp" />
 
     <EditText
-        android:id="@+id/phoneNumber"
+        android:id="@+id/updatePhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/base_margin"
@@ -59,7 +59,7 @@
         android:hint="@string/phone_num" />
 
     <EditText
-        android:id="@+id/emailAddress"
+        android:id="@+id/updateEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/base_margin"

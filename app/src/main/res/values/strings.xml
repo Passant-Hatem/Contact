@@ -16,4 +16,6 @@
     <string name="save">Save</string>
     <string name="supporting_text">your changes have not been saved</string>
     <string name="discard">Discard</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>

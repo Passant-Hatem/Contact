@@ -31,9 +31,8 @@ class ContactListFragment : Fragment() {
 
         // Recyclerview
         val adapter = ContactViewAdapter()
-        binding.contacView.adapter = adapter
-        binding.contacView.layoutManager = LinearLayoutManager(requireContext())
-
+        binding.contactView.adapter = adapter
+        binding.contactView.layoutManager = LinearLayoutManager(requireContext())
         // UserViewModel
         mContactViewModel = ViewModelProvider(this)[ContactViewModle::class.java]
         mContactViewModel.getAllContacts.observe(viewLifecycleOwner) { contact ->

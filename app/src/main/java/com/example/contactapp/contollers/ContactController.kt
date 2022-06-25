@@ -10,4 +10,8 @@ class ContactController(private val contactDao: ContactDao) {
     fun addContact(contact: Contact){
         contactDao.addContact(contact)
     }
+
+    fun updateContact(contact: Contact){
+        contactDao.updateContact(contact)
+    }
 }

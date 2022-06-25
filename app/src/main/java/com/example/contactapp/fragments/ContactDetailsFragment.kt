@@ -14,7 +14,11 @@ import com.example.contactapp.databinding.FragmentContactDetailsBinding
 
 class ContactDetailsFragment : Fragment() {
     private  lateinit var binding: FragmentContactDetailsBinding
-    private val args by navArgs<ContactDetailsFragmentArgs>()
+    private val detailArgs by navArgs<ContactDetailsFragmentArgs>()
+    private val updateArgs by navArgs<UpdateFragmentArgs>()
+
+    private lateinit var contact: Contact
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,16 +26,19 @@ class ContactDetailsFragment : Fragment() {
         // setting data to ui
         binding = FragmentContactDetailsBinding.inflate(inflater ,container ,false)
 
-        binding.fullName.text = getFullName(args.selectedContact)
-        binding.phoneNumberDetail.text = args.selectedContact.phone
-        binding.emialDetail.text = args.selectedContact.email
+        contact = if (detailArgs.selectedContact != null) detailArgs.selectedContact
+        else updateArgs.contactToBeUpdate
+
+        binding.fullName.text = getFullName(contact)
+        binding.phoneNumberDetail.text = contact.phone
+        binding.emialDetail.text = contact.email
 
         binding.emailContact.setOnClickListener{
-            emailContact(args.selectedContact.email)
+            emailContact(contact.email)
         }
 
         binding.callContact.setOnClickListener {
-            callContact(args.selectedContact.phone)
+            callContact(contact.phone)
         }
 
         setHasOptionsMenu(true)
@@ -80,7 +87,7 @@ class ContactDetailsFragment : Fragment() {
     }
 
     private fun editContact() {
-     val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToUpdateFragment(args.selectedContact)
+     val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToUpdateFragment(detailArgs.selectedContact)
      findNavController().navigate(action)
     }
 

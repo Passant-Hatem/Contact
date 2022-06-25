@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contactapp.R
 import com.example.contactapp.databinding.FragmentContactListBinding
 import com.example.contactapp.viewadapters.ContactViewAdapter
-import com.example.contactapp.viewmodels.ContactViewModle
+import com.example.contactapp.viewmodels.ContactViewModel
 
 class ContactListFragment : Fragment() {
     private lateinit var binding: FragmentContactListBinding
-    private lateinit var mContactViewModel: ContactViewModle
+    private lateinit var mContactViewModel: ContactViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +34,7 @@ class ContactListFragment : Fragment() {
         binding.contactView.adapter = adapter
         binding.contactView.layoutManager = LinearLayoutManager(requireContext())
         // UserViewModel
-        mContactViewModel = ViewModelProvider(this)[ContactViewModle::class.java]
+        mContactViewModel = ViewModelProvider(this)[ContactViewModel::class.java]
         mContactViewModel.getAllContacts.observe(viewLifecycleOwner) { contact ->
             adapter.setData(contact)
         }

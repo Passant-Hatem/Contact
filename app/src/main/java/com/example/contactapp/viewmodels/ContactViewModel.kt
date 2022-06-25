@@ -10,7 +10,7 @@ import com.example.contactapp.data.ContactDataBase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ContactViewModle(application: Application):AndroidViewModel(application){
+class ContactViewModel(application: Application):AndroidViewModel(application){
     val getAllContacts: LiveData<List<Contact>>
     private val contactController:ContactController
     init {
@@ -24,6 +24,12 @@ class ContactViewModle(application: Application):AndroidViewModel(application){
     fun addContact(contact: Contact){
         viewModelScope.launch(Dispatchers.IO){
             contactController.addContact(contact)
+        }
+    }
+
+    fun updateContact(contact: Contact){
+        viewModelScope.launch (Dispatchers.IO){
+           contactController.updateContact(contact)
         }
     }
 }

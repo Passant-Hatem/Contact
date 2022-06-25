@@ -24,12 +24,12 @@
         <action
             android:id="@+id/action_contactDetailsFragment_to_contactListFragment"
             app:destination="@id/contactListFragment" />
-        <action
-            android:id="@+id/action_contactDetailsFragment_to_updateFragment"
-            app:destination="@id/updateFragment" />
         <argument
             android:name="selectedContact"
             app:argType="com.example.contactapp.data.Contact" />
+        <action
+            android:id="@+id/action_contactDetailsFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
     </fragment>
     <fragment
         android:id="@+id/createContactFragment2"
@@ -49,7 +49,7 @@
             android:id="@+id/action_updateFragment_to_contactDetailsFragment"
             app:destination="@id/contactDetailsFragment" />
         <argument
-            android:name="contactToUpdat"
+            android:name="contactToBeUpdate"
             app:argType="com.example.contactapp.data.Contact" />
     </fragment>
 </navigation>

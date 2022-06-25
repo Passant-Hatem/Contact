@@ -9,24 +9,24 @@ import androidx.navigation.fragment.findNavController
 import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentCreatContactBinding
-import com.example.contactapp.viewmodels.ContactViewModle
+import com.example.contactapp.viewmodels.ContactViewModel
 
 class CreateContactFragment : Fragment() {
     private lateinit var binding: FragmentCreatContactBinding
-    private lateinit var mContactViewModel:ContactViewModle
+    private lateinit var mContactViewModel:ContactViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentCreatContactBinding.inflate(inflater ,container ,false)
-        mContactViewModel = ViewModelProvider(this)[ContactViewModle::class.java]
+        mContactViewModel = ViewModelProvider(this)[ContactViewModel::class.java]
         setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.contact_view_menu, menu)
+        inflater.inflate(R.menu.save_contact_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

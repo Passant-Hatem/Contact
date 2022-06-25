@@ -5,8 +5,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.contactapp.R
 import com.example.contactapp.data.Contact
@@ -15,13 +15,13 @@ import com.example.contactapp.databinding.FragmentContactDetailsBinding
 class ContactDetailsFragment : Fragment() {
     private  lateinit var binding: FragmentContactDetailsBinding
     private val args by navArgs<ContactDetailsFragmentArgs>()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // setting data to ui
         binding = FragmentContactDetailsBinding.inflate(inflater ,container ,false)
+
         binding.fullName.text = getFullName(args.selectedContact)
         binding.phoneNumberDetail.text = args.selectedContact.phone
         binding.emialDetail.text = args.selectedContact.email
@@ -80,7 +80,8 @@ class ContactDetailsFragment : Fragment() {
     }
 
     private fun editContact() {
-        Log.e("passant" ,"edit")
+     val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToUpdateFragment(args.selectedContact)
+     findNavController().navigate(action)
     }
 
 

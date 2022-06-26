@@ -12,7 +12,7 @@ interface ContactDao {
     @Update
     fun updateContact(contact: Contact)
 
-    @Query("SELECT * FROM contact_table ORDER BY id ASC")
+    @Query("SELECT * FROM contact_table ORDER BY first_name ASC")
     fun getAllContacts(): LiveData<List<Contact>>
 
     @Delete

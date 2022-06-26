@@ -1,22 +1,26 @@
 package com.example.contactapp.fragments
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentContactDetailsBinding
+import com.example.contactapp.viewmodels.ContactViewModel
 
 class ContactDetailsFragment : Fragment() {
     private  lateinit var binding: FragmentContactDetailsBinding
     private val detailArgs by navArgs<ContactDetailsFragmentArgs>()
     private val updateArgs by navArgs<UpdateFragmentArgs>()
-
+    private lateinit var mContactViewModel:ContactViewModel
     private lateinit var contact: Contact
 
     override fun onCreateView(
@@ -40,6 +44,8 @@ class ContactDetailsFragment : Fragment() {
         binding.callContact.setOnClickListener {
             callContact(contact.phone)
         }
+
+        mContactViewModel = ViewModelProvider(this)[ContactViewModel::class.java]
 
         setHasOptionsMenu(true)
 
@@ -83,7 +89,19 @@ class ContactDetailsFragment : Fragment() {
     }
 
     private fun deleteContact() {
-        Log.e("passant" ,"delete")
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes") { _, _ ->
+            mContactViewModel.deleteContact(contact)
+            Toast.makeText(
+                requireContext(),
+                "Successfully removed: ${contact.first_name}",
+                Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_contactDetailsFragment_to_contactListFragment)
+        }
+        builder.setNegativeButton("No") { _, _ -> }
+        builder.setTitle("Delete ${contact.first_name}?")
+        builder.setMessage("Are you sure you want to delete ${contact.first_name}?")
+        builder.create().show()
     }
 
     private fun editContact() {

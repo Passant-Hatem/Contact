@@ -15,4 +15,6 @@ interface ContactDao {
     @Query("SELECT * FROM contact_table ORDER BY id ASC")
     fun getAllContacts(): LiveData<List<Contact>>
 
+    @Delete
+    fun deleteContact(contact: Contact)
 }

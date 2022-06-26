@@ -14,4 +14,8 @@ class ContactController(private val contactDao: ContactDao) {
     fun updateContact(contact: Contact){
         contactDao.updateContact(contact)
     }
+
+    fun deleteContact(contact: Contact){
+        contactDao.deleteContact(contact)
+    }
 }

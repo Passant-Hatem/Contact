@@ -32,4 +32,11 @@ class ContactViewModel(application: Application):AndroidViewModel(application){
            contactController.updateContact(contact)
         }
     }
+
+    fun deleteContact(contact: Contact){
+        viewModelScope.launch (Dispatchers.IO){
+            contactController.deleteContact(contact)
+        }
+    }
+
 }

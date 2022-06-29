@@ -3,6 +3,7 @@ package com.example.contactapp.fragments
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -21,6 +22,9 @@ class CreateContactFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCreatContactBinding.inflate(inflater ,container ,false)
         mContactViewModel = ViewModelProvider(this)[ContactViewModel::class.java]
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Create contact"
+
         setHasOptionsMenu(true)
         return binding.root
     }

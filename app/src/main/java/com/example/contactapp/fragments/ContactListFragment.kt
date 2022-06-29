@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +29,8 @@ class ContactListFragment : Fragment() {
         binding.addNewContactButton.setOnClickListener{
             findNavController().navigate(R.id.action_contactListFragment_to_createContactFragment2)
         }
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Contacts"
 
         // Recyclerview
         val adapter = ContactViewAdapter()

@@ -3,6 +3,7 @@ package com.example.contactapp.fragments
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,8 @@ class UpdateFragment : Fragment() {
         binding.updateEmailAddress.append(args.contactToBeUpdate.email)
 
         mContactViewModel = ViewModelProvider(this)[ContactViewModel::class.java]
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Edit contact"
 
         setHasOptionsMenu(true)
 

@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -36,6 +37,8 @@ class ContactDetailsFragment : Fragment() {
         binding.fullName.text = getFullName(contact)
         binding.phoneNumberDetail.text = contact.phone
         binding.emialDetail.text = contact.email
+
+        (activity as AppCompatActivity).supportActionBar?.title = ""
 
         binding.emailContact.setOnClickListener{
             emailContact(contact.email)

@@ -26,6 +26,12 @@
         android:text="@string/textview"
         android:textSize="32sp" />
 
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,6 +45,12 @@
             android:src="@drawable/ic_baseline_call_24"
             android:contentDescription="@string/call_contact" />
 
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="?android:attr/listDivider" />
+
         <ImageView
             android:id="@+id/emailContact"
             android:layout_width="0dp"
@@ -47,6 +59,12 @@
             android:src="@drawable/ic_baseline_email_24"
             android:contentDescription="@string/email_contact" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="?android:attr/listDivider" />
 
     <TextView
         android:id="@+id/phoneNumberDetail"

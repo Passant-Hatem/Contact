@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context=".fragments.ContactDetailsFragment">
 
-<!--TODO add divider     -->
     <ImageView
         android:id="@+id/contactImg"
         android:layout_width="match_parent"

@@ -2,7 +2,6 @@
     <string name="app_name">Contact App</string>
     <string name="add_contact">Add New Contact</string>
     <string name="blah_blah_blah">Blah Blah Blah</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email_address">Email Address</string>
     <string name="last_name">Last Name</string>

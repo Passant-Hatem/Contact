@@ -105,7 +105,7 @@ class CreateContactFragment : Fragment() {
     private fun inputIsEmpty(firstName: String, lastName: String, phone: String ,email:String): Boolean {
         return firstName.isEmpty() && lastName.isEmpty() && phone.isEmpty() && email.isEmpty()
     }
-//TODO pop up dialog to cancel add new contact
+//TODO pop up dialog to cancel add new contact tyr using full screen dialog
   /*  override fun onPause() {
         super.onPause()
         context?.let {

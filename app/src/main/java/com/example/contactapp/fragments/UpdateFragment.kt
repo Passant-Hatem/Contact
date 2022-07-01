@@ -19,6 +19,7 @@ import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentUpdateBinding
 import com.example.contactapp.viewmodels.ContactViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class UpdateFragment : Fragment() {
     private lateinit var binding: FragmentUpdateBinding
@@ -64,10 +65,52 @@ class UpdateFragment : Fragment() {
         }
 
         binding.updatePhotoImg.setOnClickListener{
-            val mIntent = Intent()
-            mIntent.type = "image/*"
-            mIntent.action = Intent.ACTION_GET_CONTENT
-            resultLauncher.launch(mIntent)
+            if(bitmap.sameAs(BitmapFactory.decodeResource(resources, R.drawable.person))){
+                context?.let {
+                    MaterialAlertDialogBuilder(it)
+                        .setMessage(resources.getString(R.string.change_photo))
+                        .setNeutralButton(resources.getString(R.string.cancle)) { _, _ ->
+                            //Respond to natural button
+                            MaterialAlertDialogBuilder(it).setCancelable(true)
+                        }
+                        .setPositiveButton(resources.getString(R.string.change)) { _, _ ->
+                            // Respond to positive button pressed
+                            MaterialAlertDialogBuilder(it)
+                            val mIntent = Intent()
+                            mIntent.type = "image/*"
+                            mIntent.action = Intent.ACTION_GET_CONTENT
+                            resultLauncher.launch(mIntent)
+                        }
+                        .show()
+                }
+            }
+            else {
+                context?.let {
+                    MaterialAlertDialogBuilder(it)
+                        .setMessage(resources.getString(R.string.change_photo))
+                        .setNeutralButton(resources.getString(R.string.cancle)) { _, _ ->
+                            //Respond to natural button
+                            MaterialAlertDialogBuilder(it).setCancelable(true)
+                        }
+                        .setPositiveButton(resources.getString(R.string.change)) { _, _ ->
+                            // Respond to positive button pressed
+                            MaterialAlertDialogBuilder(it)
+                            val mIntent = Intent()
+                            mIntent.type = "image/*"
+                            mIntent.action = Intent.ACTION_GET_CONTENT
+                            resultLauncher.launch(mIntent)
+                        }
+                        .setNegativeButton(resources.getString(R.string.delete)) { _, _ ->
+                            // Respond to negative button press
+                            bitmap = BitmapFactory.decodeResource(resources, R.drawable.person)
+                            Glide.with(this)
+                                .load(bitmap)
+                                .circleCrop()
+                                .into(binding.updatePhotoImg)
+                        }
+                        .show()
+                }
+            }
         }
 
         setHasOptionsMenu(true)
@@ -90,7 +133,6 @@ class UpdateFragment : Fragment() {
         val lastName:String = binding.updateLastName.text.toString()
         val phone:String = binding.updatePhoneNumber.text.toString()
         val email:String = binding.updateEmailAddress.text.toString()
-        val imgLink = "image link"
 
         if(!inputIsEmpty(firstName, lastName, phone ,email)){
             // Create User Object

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentContactDetailsBinding
@@ -31,6 +32,8 @@ class ContactDetailsFragment : Fragment() {
         // setting data to ui
         binding = FragmentContactDetailsBinding.inflate(inflater ,container ,false)
 
+        (activity as AppCompatActivity).supportActionBar?.title = ""
+
         contact = if (detailArgs.selectedContact != null) detailArgs.selectedContact
         else updateArgs.contactToBeUpdate
 
@@ -38,7 +41,10 @@ class ContactDetailsFragment : Fragment() {
         binding.phoneNumberDetail.text = contact.phone
         binding.emialDetail.text = contact.email
 
-        (activity as AppCompatActivity).supportActionBar?.title = ""
+        Glide.with(this)
+            .load(contact.profilePic)
+            .circleCrop()
+            .into(binding.contactImg)
 
         binding.emailContact.setOnClickListener{
             emailContact(contact.email)

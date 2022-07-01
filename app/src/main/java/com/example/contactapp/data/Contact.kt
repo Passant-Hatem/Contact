@@ -1,5 +1,6 @@
 package com.example.contactapp.data
 
+import android.graphics.Bitmap
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -15,5 +16,5 @@ data class Contact(
     val last_name:String,
     val phone:String,
     val email:String,
-    val img_link:String
+    val profilePic:Bitmap
 ):Parcelable

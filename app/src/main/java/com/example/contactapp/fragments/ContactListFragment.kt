@@ -39,7 +39,7 @@ class ContactListFragment : Fragment() {
         // UserViewModel
         mContactViewModel = ViewModelProvider(this)[ContactViewModel::class.java]
         mContactViewModel.getAllContacts.observe(viewLifecycleOwner) { contact ->
-            adapter.setData(contact)
+            adapter.setData(contact , activity as AppCompatActivity)
         }
 
         return binding.root

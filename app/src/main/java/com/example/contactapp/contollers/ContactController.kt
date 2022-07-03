@@ -3,6 +3,7 @@ package com.example.contactapp.contollers
 import androidx.lifecycle.LiveData
 import com.example.contactapp.data.Contact
 import com.example.contactapp.data.ContactDao
+import kotlinx.coroutines.flow.Flow
 
 class ContactController(private val contactDao: ContactDao) {
     val getAllContact: LiveData<List<Contact>> = contactDao.getAllContacts()
@@ -13,6 +14,10 @@ class ContactController(private val contactDao: ContactDao) {
 
     fun updateContact(contact: Contact){
         contactDao.updateContact(contact)
+    }
+
+    fun searchContact(searchQuery:String):Flow<List<Contact>>{
+        return contactDao.searchContact(searchQuery)
     }
 
     fun deleteContact(contact: Contact){

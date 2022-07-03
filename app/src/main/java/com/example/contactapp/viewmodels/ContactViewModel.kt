@@ -3,6 +3,7 @@ package com.example.contactapp.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.contactapp.contollers.ContactController
 import com.example.contactapp.data.Contact
@@ -31,6 +32,10 @@ class ContactViewModel(application: Application):AndroidViewModel(application){
         viewModelScope.launch (Dispatchers.IO){
            contactController.updateContact(contact)
         }
+    }
+
+    fun searchContact(searchQuery: String): LiveData<List<Contact>> {
+        return contactController.searchContact(searchQuery).asLiveData()
     }
 
     fun deleteContact(contact: Contact){

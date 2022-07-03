@@ -22,6 +22,8 @@
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/menu/contact_details_menu.xml" value="0.153125" />
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/menu/contact_view_menu.xml" value="0.1" />
         <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/menu/menu.xml" value="0.203125" />
+        <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/menu/save_contact_menu.xml" value="0.1" />
+        <entry key="..\:/Android/Kotlin/Projects/ContactApp/app/src/main/res/menu/search_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

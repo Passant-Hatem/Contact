@@ -4,9 +4,9 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +17,7 @@ import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentContactDetailsBinding
 import com.example.contactapp.viewmodels.ContactViewModel
+
 
 class ContactDetailsFragment : Fragment() {
     private  lateinit var binding: FragmentContactDetailsBinding
@@ -33,6 +34,16 @@ class ContactDetailsFragment : Fragment() {
         binding = FragmentContactDetailsBinding.inflate(inflater ,container ,false)
 
         (activity as AppCompatActivity).supportActionBar?.title = ""
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                    findNavController().navigate(R.id.action_contactDetailsFragment_to_contactListFragment)
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
         contact = if (detailArgs.selectedContact != null) detailArgs.selectedContact
         else updateArgs.contactToBeUpdate

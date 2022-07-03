@@ -1,5 +1,4 @@
 package com.example.contactapp.fragments
-//TODO when press back button it back to update fragment not list fragment
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap

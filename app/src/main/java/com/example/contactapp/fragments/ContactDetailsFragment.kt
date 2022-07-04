@@ -86,19 +86,17 @@ class ContactDetailsFragment : Fragment() {
         startActivity(dialIntent)
     }
 
-    //TODO fix it
     private fun emailContact(email: String) {
-//        val mIntent = Intent(Intent.ACTION_SEND)
-//        mIntent.data = Uri.parse("mailto:")
-//        mIntent.type = "text/plain"
-//        mIntent.putExtra(Intent.EXTRA_EMAIL, email)
-//        startActivity(Intent.createChooser(mIntent, "Choose Email Client..."))
+        val mIntent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL ,email)
+        }
+        startActivity(mIntent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.contact_details_menu, menu)
     }
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

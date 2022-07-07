@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.view.*
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -18,6 +19,7 @@ import com.example.contactapp.R
 import com.example.contactapp.data.Contact
 import com.example.contactapp.databinding.FragmentCreatContactBinding
 import com.example.contactapp.viewmodels.ContactViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class CreateContactFragment : Fragment() {
     private lateinit var binding: FragmentCreatContactBinding
@@ -34,8 +36,31 @@ class CreateContactFragment : Fragment() {
 
         (activity as AppCompatActivity).supportActionBar?.title = "Create contact"
 
-         bitmap = BitmapFactory.decodeResource(resources, R.drawable.person)
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                    context?.let {
+                        MaterialAlertDialogBuilder(it)
+                            .setTitle(resources.getString(R.string.supporting_text))
+                            .setNeutralButton(resources.getString(R.string.cancle)) { _, _ ->
+                                // Respond to neutral button press
+                            }
+                            .setNegativeButton(resources.getString(R.string.discard)) { _, _ ->
+                                // Respond to negative button press
+                                findNavController().navigate(R.id.action_createContactFragment2_to_contactListFragment)
+                            }
+                            .setPositiveButton(resources.getString(R.string.save)) {_, _ ->
+                                // Respond to positive button press
+                                insertDatToDatabase()
+                            }
+                            .show()
+                    }
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
 
+        bitmap = BitmapFactory.decodeResource(resources, R.drawable.person)
 
         val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -105,23 +130,6 @@ class CreateContactFragment : Fragment() {
     private fun inputIsEmpty(firstName: String, lastName: String, phone: String ,email:String): Boolean {
         return firstName.isEmpty() && lastName.isEmpty() && phone.isEmpty() && email.isEmpty()
     }
-//TODO pop up dialog to cancel add new contact tyr using full screen dialog
-  /*  override fun onPause() {
-        super.onPause()
-        context?.let {
-         MaterialAlertDialogBuilder(it)
-             .setMessage(resources.getString(R.string.supporting_text))
-             .setPositiveButton(resources.getString(R.string.save)) { _, _ ->
-                 // Respond to positive button press
-                 insertDatToDatabase()
-             }
-             .setNegativeButton(resources.getString(R.string.discard)) { _, _ ->
-                 // Respond to negative button press
-             }
-             .show()
-
-     }
-    }*/
 }
 
 

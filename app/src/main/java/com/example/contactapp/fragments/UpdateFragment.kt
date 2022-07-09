@@ -160,21 +160,26 @@ class UpdateFragment : Fragment() {
         val email:String = binding.updateEmailAddress.text.toString()
 
         if(!inputIsEmpty(firstName, lastName, phone ,email)){
-            // Create User Object
-            val newContact= Contact(
-                args.contactToBeUpdate.id,
-                firstName,
-                lastName,
-                phone,
-                email,
-                bitmap
-            )
-            // Add Data to Database
-            mContactViewModel.updateContact(newContact)
-            Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_LONG).show()
-            // Navigate Back
-            val action = UpdateFragmentDirections.actionUpdateFragmentToContactDetailsFragment(newContact)
-            findNavController().navigate(action)
+            if (checkEmail(email)){
+                // Create User Object
+                val newContact= Contact(
+                    args.contactToBeUpdate.id,
+                    firstName,
+                    lastName,
+                    phone,
+                    email,
+                    bitmap
+                )
+                // Add Data to Database
+                mContactViewModel.updateContact(newContact)
+                Toast.makeText(requireContext(), "Successfully updated!", Toast.LENGTH_LONG).show()
+                // Navigate Back
+                val action = UpdateFragmentDirections.actionUpdateFragmentToContactDetailsFragment(newContact)
+                findNavController().navigate(action)
+
+            }else{
+                Toast.makeText(requireContext() ,"please enter an correct email" ,Toast.LENGTH_LONG).show()
+            }
         }else{
             Toast.makeText(requireContext() ,"please fill all fields" , Toast.LENGTH_LONG).show()
         }
@@ -182,5 +187,9 @@ class UpdateFragment : Fragment() {
 
     private fun inputIsEmpty(firstName: String, lastName: String, phone: String ,email:String ): Boolean {
         return firstName.isEmpty() && lastName.isEmpty() && phone.isEmpty() && email.isEmpty()
+    }
+
+    private fun checkEmail(email:String):Boolean{
+        return email.contains('@')
     }
 }

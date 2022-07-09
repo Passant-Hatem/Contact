@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -105,23 +106,27 @@ class CreateContactFragment : Fragment() {
         val lastName:String = binding.lastName.text.toString()
         val phone:String = binding.phoneNumber.text.toString()
         val email:String = binding.emailAddress.text.toString()
-        val imgLink = "image link"
 
-        if(!inputIsEmpty(firstName, lastName, phone ,email)){
-            // Create User Object
-            val newContact=Contact(
-                0,
-                firstName,
-                lastName,
-                phone,
-                email,
-                bitmap
-            )
-            // Add Data to Database
-            mContactViewModel.addContact(newContact)
-            Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
-            // Navigate Back
-            findNavController().navigate(R.id.action_createContactFragment2_to_contactListFragment)
+        if(!inputIsEmpty(firstName, lastName, phone ,email)) {
+            if (checkEmail(email)) {
+                // Create User Object
+                val newContact = Contact(
+                    0,
+                    firstName,
+                    lastName,
+                    phone,
+                    email,
+                    bitmap
+                )
+                // Add Data to Database
+                mContactViewModel.addContact(newContact)
+                Toast.makeText(requireContext(), "Successfully added!", Toast.LENGTH_LONG).show()
+                // Navigate Back
+                findNavController().navigate(R.id.action_createContactFragment2_to_contactListFragment)
+            }
+            else{
+                Toast.makeText(requireContext() ,"please enter an correct email" ,Toast.LENGTH_LONG).show()
+            }
         }else{
             Toast.makeText(requireContext() ,"please fill all fields" ,Toast.LENGTH_LONG).show()
         }
@@ -129,6 +134,10 @@ class CreateContactFragment : Fragment() {
 
     private fun inputIsEmpty(firstName: String, lastName: String, phone: String ,email:String): Boolean {
         return firstName.isEmpty() && lastName.isEmpty() && phone.isEmpty() && email.isEmpty()
+    }
+
+    private fun checkEmail(email:String):Boolean{
+        return email.contains('@')
     }
 }
 

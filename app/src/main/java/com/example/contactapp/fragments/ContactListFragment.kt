@@ -13,6 +13,8 @@ import com.example.contactapp.databinding.FragmentContactListBinding
 import com.example.contactapp.viewadapters.ContactViewAdapter
 import com.example.contactapp.viewmodels.ContactViewModel
 import android.view.Menu
+import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ActivityCompat.finishAffinity
 
 class ContactListFragment : Fragment() , SearchView.OnQueryTextListener{
     private lateinit var binding: FragmentContactListBinding
@@ -24,6 +26,17 @@ class ContactListFragment : Fragment() , SearchView.OnQueryTextListener{
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentContactListBinding.inflate(inflater, container, false)
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // Handle the back button event
+                    finishAffinity(requireActivity())
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
+
 
         //add new contact floating button
         binding.addNewContactButton.setOnClickListener{
